@@ -1,0 +1,19 @@
+@name Killer Bomb
+@inputs A:entity TargetPos:vector
+@outputs 
+@persist  
+@trigger 
+@strict
+
+runOnChat(1)
+
+if(chatClk(owner())) {
+    if(owner():lastSaid():index(1) == "!") {
+        Arguments = owner():lastSaid():sub(2):explode(" ")
+        Command = Arguments:shiftString()
+        if(Command == "go") {
+            print(Arguments:concat(" "))
+            A
+        }
+    }
+}

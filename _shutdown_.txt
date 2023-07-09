@@ -1,0 +1,39 @@
+@name turret
+@inputs Target:entity RangerTargetID:number TargetID:number Entity:entity
+@outputs TargetPos:vector On TargetLock OwnerPos:vector Keypress:number Fire Jump NextTarget
+@persist  
+@trigger 
+@strict
+
+OwnerPos = (owner():pos()+vec(0,0,120))
+
+runOnTick(1)
+
+Alt = owner():keyWalk()
+F = owner():keyPressed("f")
+G = owner():keyPressed("g")
+NextTarget = owner():keyPressed("n")
+
+
+if( changed(F) && F ) {
+    Fire = !Fire
+}
+
+if( changed(Alt) && Alt ) {
+    On = !On
+}
+
+Jump = G
+
+if (!Target) {
+        
+} else {
+    TargetPos = (Target:pos()+vec(0,0,50))
+}
+# If Ranger is looking at Target
+#if (TargetID == 0) {
+#    TargetLock = 0
+#} elseif (TargetID == RangerTargetID) {
+#        TargetLock = 1
+#}
+
